@@ -79,7 +79,7 @@ void UserAuto::FSM_User_Connecting_User_Connected(){
 	char pass[20];
 	//printf("Username: ");
 	//scanf("%s",name);
-	strcpy(name,"Milos\0");
+	strcpy(name,"Stevan\0");
 	//printf("Pasword: ");
 	//scanf("%s",pass);
 	strcpy(pass,"12345\0");

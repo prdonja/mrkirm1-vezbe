@@ -1,0 +1,10 @@
+﻿Build started 12.12.2018 13:22:04.
+     1>Project "D:\ra207\vezbe\vezba 3 - Okruzenje za realizaciju protokola - Primer zadatka POP3\POP3ClientCppUnit\POP3ClientCppUnit\POP3ClientCppUnit.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\POP3ClientCppUnit.lastbuildstate".
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppClean.targets(74,5): warning : Access to the path 'D:\RA207\VEZBE\VEZBA 3 - OKRUZENJE ZA REALIZACIJU PROTOKOLA - PRIMER ZADATKA POP3\POP3CLIENTCPPUNIT\DEBUG\POP3CLIENTCPPUNIT.EXE' is denied.
+     1>Done Building Project "D:\ra207\vezbe\vezba 3 - Okruzenje za realizaciju protokola - Primer zadatka POP3\POP3ClientCppUnit\POP3ClientCppUnit\POP3ClientCppUnit.vcxproj" (clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.01

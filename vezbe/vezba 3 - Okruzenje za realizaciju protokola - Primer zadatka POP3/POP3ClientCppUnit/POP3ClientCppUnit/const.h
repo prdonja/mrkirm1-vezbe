@@ -3,7 +3,7 @@
 
 #include "./kernelTypes.h"
 
-#define D_TESTING
+//#define D_TESTING
 
 const uint8 CH_AUTOMATE_TYPE_ID = 0x00;
 const uint8 CL_AUTOMATE_TYPE_ID = 0x01;
