@@ -77,12 +77,12 @@ void UserAuto::FSM_User_Connecting_User_Connected(){
 
 	char name[20];
 	char pass[20];
-	//printf("Username: ");
-	//scanf("%s",name);
-	strcpy(name,"Stevan\0");
-	//printf("Pasword: ");
-	//scanf("%s",pass);
-	strcpy(pass,"12345\0");
+	printf("Username: ");
+	scanf("%s",name);
+	//strcpy(name,"Stevan\0");
+	printf("Pasword: ");
+	scanf("%s",pass);
+	//strcpy(pass,"12345\0");
 
 	
 	PrepareNewMessage(0x00, MSG_User_Name_Password);

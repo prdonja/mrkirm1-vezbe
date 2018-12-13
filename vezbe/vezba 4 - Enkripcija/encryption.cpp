@@ -26,6 +26,8 @@
 #include "conio.h"
 #include "pcap.h"
 #include "protocol_headers.h"
+#define ROW 3;
+#define COL 7;
 
 // Function declarations
 void packet_handler(unsigned char *param, const struct pcap_pkthdr *packet_header, const unsigned char *packet_data);	// Callback function invoked by WinPcap for every incoming packet
@@ -130,20 +132,91 @@ void packet_handler(unsigned char* file_dumper, const struct pcap_pkthdr* packet
 // Returns a copy of packet with encrypted application data
 unsigned char* encrypt_data(const unsigned char* packet_data, unsigned char* app_data, int app_length)
 {
+
 	// Reserve memory for copy of the packet
-	unsigned char encrypted_packet[ETHERNET_FRAME_MAX];
+	
+	int i = 0;
+	int j = 0;
+	int n = 0;
 
 	// TODO 1: Define keys
+	unsigned char encrypted_packet[ETHERNET_FRAME_MAX];
+	unsigned char encrypted_packetcpy[ETHERNET_FRAME_MAX];
+	unsigned char encrypted[3][7];
+	unsigned int transRow[3] = {1, 0, 2};
+	unsigned int transCol[7] = {1, 0, 6, 2, 4, 3, 5};
+	int app_position;
+	unsigned char *enc_msg;
 
 	// TODO 2: Print original message in table format
-
+	print_message_as_table(app_data, 3, 7);
 	// TODO 3: Create a copy of the packets (copy headers and initialize application data with zeros)
+	app_position = app_data - packet_data;
+
+	enc_msg = encrypted_packet + app_position;
+
+	memcpy(encrypted_packet, packet_data, app_position);
+
+	memset(encrypted_packet, '0', app_length);
+
+	printf("\n");
+
+	print_message_as_table(encrypted_packet, 3, 7);
+
+	printf("\n");
+
 
 	// TODO 4: Find new row and column indices using old row and column indices
+	for(i = 0; i < 3; i++)
+	{
+		n = transRow[i];
+		for(j = 0; j < 7; j++)
+		{
+			encrypted_packet[i*7 + j] = app_data[n*7 + j];
+		}
+	}
+
+	memcpy(encrypted_packetcpy, encrypted_packet,  app_length);
+
+	for(i = 0; i < 7; i++)
+	{
+		n = transCol[i];
+		for(j = 0; j < 3; j++)
+		{
+			encrypted_packet[j*7 + i] = encrypted_packetcpy[j*7 + n];
+		}
+	}
+
+	
+
 
 	// TODO 5: Encrypt application data
 
 	// TODO 6: Print encrypted message
 
+	printf("\n");
+
+	print_message_as_table(encrypted_packet, 3, 7);
+
+	printf("\n");
+
 	return encrypted_packet;
+}
+
+void print_message_as_table(unsigned char* data, int rows_max, int columns_max)
+{
+	int i = 0;
+	int j = 0;
+	for(i = 0; i < rows_max * columns_max; i++)
+	{
+		if(j == columns_max)
+		{
+			printf("\n");
+			j = 0;
+		}
+		j++;
+		printf("%c ", data[i]);
+
+	}
+	printf("\n");
 }
